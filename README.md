@@ -82,6 +82,10 @@ GARGANTUA/
 └── README.md
 ```
 
+## 网页端体验
+无需安装，浏览器打开即可：  
+[https://yuyao-gith.github.io/GARGANTUA/](https://yuyao-gith.github.io/GARGANTUA/)
+
 ## 实现要点
 
 - **测地线积分**：每条光线从相机出发，在片元着色器内按自适应步长沿 Schwarzschild 时空积分，命中吸积盘（`uDin`–`uDout` 半径范围）或事件视界（RS = 1）时分别着色；天空与星空作为远场背景采样。
