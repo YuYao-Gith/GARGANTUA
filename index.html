@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GARGANTUA — Schwarzschild Black Hole Raytracer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- importmap 注入器：本地 vendor/ 优先，缺失时自动回退 CDN -->
+    <script src="js/boot.js"></script>
+</head>
+<body>
+    <canvas id="view"></canvas>
+    <div id="fx" aria-hidden="true"></div>
+
+    <!-- HUD -->
+    <div id="hud" role="status" aria-label="Heads-up display">
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+
+        <div class="title-block">
+            <div class="main-title">GARGANTUA</div>
+            <div class="sub-title">SUPERMASSIVE BLACK HOLE · 1.0 × 10⁸ M☉</div>
+            <div class="sub-sub">SCHWARZSCHILD METRIC // NULL-GEODESIC RAYTRACING</div>
+        </div>
+
+        <div class="clock-block">
+            <div class="clock-label">MISSION ELAPSED</div>
+            <div class="clock-value" id="clock">00:00:00</div>
+        </div>
+
+        <div class="telemetry">
+            <div class="telem-row"><span class="telem-label">OBSERVER DISTANCE</span><span class="telem-value" id="t-dist">0.00 RS</span></div>
+            <div class="telem-row"><span class="telem-label">DISK INCLINATION</span><span class="telem-value" id="t-inc">0.0°</span></div>
+            <div class="telem-row"><span class="telem-label">GEODESIC STEPS</span><span class="telem-value" id="t-steps">460</span></div>
+            <div class="telem-row"><span class="telem-label">RENDER PROFILE</span><span class="telem-value" id="t-profile">CINEMATIC</span></div>
+            <div class="telem-row"><span class="telem-label">FRAME RATE</span><span class="telem-value" id="t-fps">60 fps</span></div>
+        </div>
+
+        <div class="deck" id="deck">
+            <div class="deck-title" id="deck-title">CINEMATIC SEQUENCE</div>
+            <button class="deck-btn cinemagic active" id="btn-cine" aria-label="Toggle cinematic sequence">▶ CINEMATIC SEQUENCE</button>
+            <div class="deck-grid">
+                <button class="deck-btn preset" data-preset="poster">POSTER 38°</button>
+                <button class="deck-btn preset" data-preset="edge">EDGE-ON</button>
+                <button class="deck-btn preset" data-preset="polar">POLAR</button>
+                <button class="deck-btn preset" data-preset="close">CLOSE PASS</button>
+            </div>
+            <div class="deck-row">
+                <button class="deck-btn" id="btn-autoorbit">AUTO-ORBIT</button>
+                <button class="deck-btn" id="btn-quality">CINEMATIC</button>
+                <button class="deck-btn" id="btn-params">PARAMS</button>
+                <button class="deck-btn active" id="btn-hud">HUD</button>
+            </div>
+            <button class="deck-btn" id="btn-sound">🔇 SOUND: OFF</button>
+            <div class="deck-hint" id="deck-hint">DRAG ORBIT · SCROLL/PINCH ZOOM · C CINEMATIC · M SOUND · 1-4 VIEWS · P PARAMS · H HUD</div>
+        </div>
+
+        <div class="toast" id="toast"></div>
+    </div>
+
+    <!-- 参数面板 -->
+    <div id="params" class="hidden" role="dialog" aria-label="Parameters panel">
+        <div class="params-header">
+            <span>PARAMETERS</span>
+            <button id="params-reset" aria-label="Reset parameters to defaults">RESET</button>
+        </div>
+        <div class="params-scroll" id="params-scroll">
+            <!-- 由 ui.js 动态生成 -->
+        </div>
+    </div>
+
+    <!-- 启动层 -->
+    <div id="intro" role="alert" aria-label="Loading">
+        <div class="intro-card">
+            <div class="intro-tag">REAL-TIME RELATIVISTIC RAYTRACING</div>
+            <div class="intro-title">GARGANTUA</div>
+            <div class="intro-quote">“Do not go gentle into that good night.”</div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
